@@ -4,6 +4,8 @@ import { toast } from 'react-toastify'
 
 import {IoMdClose} from 'react-icons/io'
 import summaryApi from '../common'
+import Cookies from "js-cookie";
+
 const Changeuserrole = ({
   name,
   email,
@@ -25,8 +27,10 @@ const Changeuserrole = ({
     const fetchresponse=await fetch(summaryApi.userupdate.url,{
       method:summaryApi.userupdate.method,
       credentials:'include',
-      headers:{
-        'content-type':'application/json'
+      headers: {
+        'Content-Type': 'application/json', // Set the Content-Type
+        'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+        'jwttoken': Cookies.get('token') // Add your custom key-value pair here
       },
       body:JSON.stringify({
         userid:userid,

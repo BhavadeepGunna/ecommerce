@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import DisplayImage from './Displayimage';
 import { MdDelete } from "react-icons/md";
 import summaryApi from "../common";
+import Cookies from "js-cookie";
 
 const Uploadproduct = ({ onclose,fetchData }) => {
   const [data, setData] = useState({
@@ -71,8 +72,10 @@ const Uploadproduct = ({ onclose,fetchData }) => {
     const response = await fetch(summaryApi.uploadproduct.url,{
       method : summaryApi.uploadproduct.method,
       credentials : 'include',
-      headers : {
-        "content-type" : "application/json"
+      headers: {
+        'Content-Type': 'application/json', // Set the Content-Type
+        'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+        'jwttoken': Cookies.get('token') // Add your custom key-value pair here
       },
       body : JSON.stringify(data)
     })

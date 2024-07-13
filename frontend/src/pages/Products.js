@@ -4,6 +4,7 @@ import Uploadproduct from '../components/uploadproduct'
 import summaryApi from '../common'
 import { toast } from 'react-toastify'
 import Adminproductcard from '../components/Adminproductcard'
+import Cookies from "js-cookie";
 
 const Products = () => {
   const [openuploadproduct,setopenuploadproduct]=useState(false)
@@ -13,7 +14,12 @@ const Products = () => {
   const fetchallproduct=async()=>{
     const response=await fetch(summaryApi.allproduct.url,{
       method:summaryApi.allproduct.method,
-      credentials:'include'
+      credentials:'include',
+      headers: {
+        'Content-Type': 'application/json', // Set the Content-Type
+        'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+        'jwttoken': Cookies.get('token') // Add your custom key-value pair here
+      },
     })
 
     const dataresponse=await response.json()

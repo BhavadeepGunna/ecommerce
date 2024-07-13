@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import summaryApi from '../common';
 import { toast } from 'react-toastify';
 import context from '../context';
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [showpassword,setshowpassword]=useState(true);
@@ -31,8 +32,10 @@ const Login = () => {
         const dataResponse=await fetch(summaryApi.signin.url,{
           method:summaryApi.signin.method,
           credentials:'include',
-          headers:{
-            "content-type":"application/json"
+          headers: {
+            'Content-Type': 'application/json', // Set the Content-Type
+            'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+            'jwttoken': Cookies.get('token') // Add your custom key-value pair here
           },
           body: JSON.stringify(data)
         })

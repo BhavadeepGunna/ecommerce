@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import Context from './context';
 import { useDispatch } from 'react-redux';
 import { setuserdetails } from './store/userslice';
+import Cookies from "js-cookie";
 
 function App() {
   const dispatch=useDispatch()
@@ -21,9 +22,15 @@ function App() {
 
 
   const fetchuserdetails=async()=>{
+
     const dataresponse=await fetch(summaryApi.current_user.url,{
       method:summaryApi.current_user.method,
-      credentials:'include'
+      credentials:'include',
+      headers: {
+        'Content-Type': 'application/json', // Set the Content-Type
+        'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+        'jwttoken': Cookies.get('token') // Add your custom key-value pair here
+      },
     })
     const dataApi=await dataresponse.json()
 
@@ -38,7 +45,12 @@ function App() {
   const fetchuseraddtocart = async()=>{
     const dataResponse = await fetch(summaryApi.countcart.url,{
       method : summaryApi.countcart.method,
-      credentials : 'include'
+      credentials : 'include',
+      headers: {
+        'Content-Type': 'application/json', // Set the Content-Type
+        'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+        'jwttoken': Cookies.get('token') // Add your custom key-value pair here
+      },
     })
 
     const dataApi = await dataResponse.json()

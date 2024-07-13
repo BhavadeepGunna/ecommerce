@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import DisplayImage from './Displayimage';
 import { MdDelete } from "react-icons/md";
 import summaryApi from "../common";
+import Cookies from "js-cookie";
 
 const Admineditproduct = ({
     onclose,
@@ -76,8 +77,10 @@ const Admineditproduct = ({
         const response = await fetch(summaryApi.updateproduct.url,{
           method : summaryApi.updateproduct.method,
           credentials : 'include',
-          headers : {
-            "content-type" : "application/json"
+          headers: {
+            'Content-Type': 'application/json', // Set the Content-Type
+            'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+            'jwttoken': Cookies.get('token') // Add your custom key-value pair here
           },
           body : JSON.stringify(data)
         })

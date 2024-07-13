@@ -3,6 +3,7 @@ import Context from '../context'
 import summaryApi from '../common/index'
 import displayINRCurrency from '../helper/displaycurrenct'
 import { MdDelete } from "react-icons/md";
+import Cookies from "js-cookie";
 
 const Cart = () => {
     const [data,setdata] = useState([])
@@ -16,9 +17,11 @@ const Cart = () => {
         const response = await fetch(summaryApi.cartproductview.url,{
             method : summaryApi.cartproductview.method,
             credentials : 'include',
-            headers : {
-                "content-type" : 'application/json'
-            },
+            headers: {
+                'Content-Type': 'application/json', // Set the Content-Type
+                'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+                'jwttoken': Cookies.get('token') // Add your custom key-value pair here
+              },
         })
        
 
@@ -46,9 +49,11 @@ const Cart = () => {
         const response = await fetch(summaryApi.updatecartproduct.url,{
             method : summaryApi.updatecartproduct.method,
             credentials : 'include',
-            headers : {
-                "content-type" : 'application/json'
-            },
+            headers: {
+                'Content-Type': 'application/json', // Set the Content-Type
+                'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+                'jwttoken': Cookies.get('token') // Add your custom key-value pair here
+              },
             body : JSON.stringify(
                 {   
                     _id : id,
@@ -71,9 +76,11 @@ const Cart = () => {
             const response = await fetch(summaryApi.updatecartproduct.url,{
                 method : summaryApi.updatecartproduct.method,
                 credentials : 'include',
-                headers : {
-                    "content-type" : 'application/json'
-                },
+                headers: {
+                    'Content-Type': 'application/json', // Set the Content-Type
+                    'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+                    'jwttoken': Cookies.get('token') // Add your custom key-value pair here
+                  },
                 body : JSON.stringify(
                     {   
                         _id : id,
@@ -95,9 +102,11 @@ const Cart = () => {
         const response = await fetch(summaryApi.deletecartproduct.url,{
             method : summaryApi.deletecartproduct.method,
             credentials : 'include',
-            headers : {
-                "content-type" : 'application/json'
-            },
+            headers: {
+                'Content-Type': 'application/json', // Set the Content-Type
+                'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+                'jwttoken': Cookies.get('token') // Add your custom key-value pair here
+              },
             body : JSON.stringify(
                 {   
                     _id : id,

@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import moment from 'moment';
 import { MdEdit } from "react-icons/md";
 import Changeuserrole from '../components/Changeuserrole';
+import Cookies from "js-cookie";
 
 const Allusers = () => {
   const [alluser,setalluser]=useState([]);
@@ -18,7 +19,12 @@ const Allusers = () => {
   const fetchallusers=async()=>{
     const fetchdata=await fetch(summaryApi.all_users.url,{
       method:summaryApi.all_users.method,
-      credentials:'include'
+      credentials:'include',
+      headers: {
+        'Content-Type': 'application/json', // Set the Content-Type
+        'Authorization': `Bearer ${Cookies.get('token')}`, // Example of adding an Authorization header
+        'jwttoken': Cookies.get('token') // Add your custom key-value pair here
+      },
     })
     const dataresponse=await fetchdata.json()
 
