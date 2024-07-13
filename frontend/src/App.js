@@ -28,8 +28,9 @@ function App() {
     const dataApi=await dataresponse.json()
 
     if(dataApi.success){
+      console.log('enterred')
+      console.log(dataApi)
       dispatch(setuserdetails(dataApi.data))
-
     }
     
   }
