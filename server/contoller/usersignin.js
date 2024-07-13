@@ -29,7 +29,7 @@ const usersignin=async(req,res)=>{
 
             const token= await jwt.sign(tokendata, process.env.TOKEN_SECRET_KEY, { expiresIn: 60 * 60* 8 });
             const tokenoption={
-                httponly:false,
+                httponly:true,
                 secure:true
             }
             res.cookie("token",token,tokenoption).json({

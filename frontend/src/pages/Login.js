@@ -42,6 +42,8 @@ const Login = () => {
         const dataApi=await dataResponse.json()
         
         if(dataApi.success){
+          console.log("token",dataApi.data)
+          Cookies.set('token', dataApi.data);
           toast.success(dataApi.message)
           navigate('/')
           fetchuserdetails()

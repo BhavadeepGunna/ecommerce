@@ -36,7 +36,7 @@ function App() {
 
     if(dataApi.success){
       console.log('enterred')
-      console.log(dataApi)
+      console.log("user",dataApi)
       dispatch(setuserdetails(dataApi.data))
     }
     
@@ -54,7 +54,7 @@ function App() {
     })
 
     const dataApi = await dataResponse.json()
-    console.log(dataApi)
+    console.log("cart",dataApi)
 
     setcartproductcount(dataApi?.data?.count)
   }
