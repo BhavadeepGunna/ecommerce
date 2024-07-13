@@ -6,7 +6,12 @@ const addtocartcontroller=async(req,res)=>{
 
         const{productid}=req.body
 
-        const product=await addtocart.findOne({productid ,_id:user})
+        console.log('user',user)
+        console.log('productid',productid)
+
+        const product=await addtocart.findOne({productid,userid:user})
+
+        console.log("product",product)
 
         if(product){
             return res.json({

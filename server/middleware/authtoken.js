@@ -4,9 +4,8 @@ const jwt=require('jsonwebtoken')
 const authtoken=async(req,res,next)=>{
     try{
         //const token=req.cookies?.token
-        console.log("headers",req.headers['authorization'])
+        //console.log("headers",req.headers['authorization'])
         const token=req.headers.jwttoken
-        console.log("token",token)
 
 
 

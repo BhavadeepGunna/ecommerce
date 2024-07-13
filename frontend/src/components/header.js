@@ -30,6 +30,7 @@ const Header = () => {
     if (dataApi.success) {
       toast.success(dataApi.message);
       dispatch(setuserdetails(null));
+      navigate('/')
     } else {
       toast.error(dataApi.message);
     }
