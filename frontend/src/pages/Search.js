@@ -9,7 +9,6 @@ const Search = () => {
     const [data,setData] = useState([])
     const [loading,setLoading] = useState(false)
 
-    console.log("query",query.search)
 
     
     const fetchProduct = async()=>{
@@ -17,10 +16,8 @@ const Search = () => {
         const response = await fetch(summaryApi.search.url+query.search)
         const dataResponse = await response.json()
         setLoading(false)
-        console.log("data",dataResponse)
 
         setData(dataResponse.data)
-        console.log(data)
     }
 
     useEffect(()=>{

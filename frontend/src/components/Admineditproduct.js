@@ -31,7 +31,6 @@ const Admineditproduct = ({
     
       const handleUploadProduct = async(e) => {
         const file = e.target.files[0]
-        console.log(file)
         const uploadImageCloudinary = await uploadimage(file)
     
     
@@ -44,8 +43,6 @@ const Admineditproduct = ({
       }
     
       const handleDeleteProductImage = async(index)=>{
-        console.log("image index",index)
-        
         const newProductImage = [...data.productimage]
         newProductImage.splice(index,1)
     
@@ -72,7 +69,6 @@ const Admineditproduct = ({
        {/**upload product */}
        const handleSubmit = async(e) =>{
         e.preventDefault()
-        console.log(data)
         
         const response = await fetch(summaryApi.updateproduct.url,{
           method : summaryApi.updateproduct.method,
@@ -89,7 +85,6 @@ const Admineditproduct = ({
         console.log("responseData",responseData)
     
         if(responseData.success){
-          console.log('enterred')
             toast.success(responseData?.message)
             onclose()
             fetchdata()

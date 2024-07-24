@@ -20,7 +20,6 @@ const Changeuserrole = ({
 
   const handlechangeselect=(e)=>{
     setuserrole(e.target.value)
-    console.log("1",userrole)
     console.log(e.target.value)
   }
   const updatauserrole=async()=>{
@@ -47,8 +46,6 @@ const Changeuserrole = ({
     }else{
       toast.error(responsedata.message)
     }
-
-    console.log("role updated",responsedata)
 
 
    

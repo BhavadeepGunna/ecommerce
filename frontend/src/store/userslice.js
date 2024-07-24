@@ -11,7 +11,6 @@ const initialState = {
     reducers: {
         setuserdetails:(state,action)=>{
             state.user=action.payload
-
         }
       
 

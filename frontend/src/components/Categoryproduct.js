@@ -7,7 +7,6 @@ import productcategory from '../helper/ProductCategory'
 
 const Categoryproduct = () => {
     const params=useParams()
-    console.log(params)
 
     const [data,setData] = useState([])
     const navigate = useNavigate()
@@ -15,7 +14,6 @@ const Categoryproduct = () => {
     const location = useLocation()
     const urlSearch = new URLSearchParams(location.search)
     const urlCategoryListinArray = urlSearch.getAll("category")
-    console.log(urlCategoryListinArray)
 
     const urlCategoryListObject = {}
     urlCategoryListinArray.forEach(el =>{
@@ -41,12 +39,9 @@ const Categoryproduct = () => {
       const dataResponse = await response.json()
       setData(dataResponse?.data || [])
 }
-     console.log("1",selectCategory)
-     console.log("3",urlCategoryListObject)
 
     const handleSelectCategory = (e) =>{
       const {name , value, checked} =  e.target
-      console.log("1,1",selectCategory)
 
       setSelectCategory((preve)=>{
         return{
@@ -54,7 +49,6 @@ const Categoryproduct = () => {
           [value] : checked
         }
       })
-      console.log("2",selectCategory)
     }
 
     useEffect(()=>{

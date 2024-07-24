@@ -5,8 +5,6 @@ const updatauser=async(req,res)=>{
 
         const sessionuser= req.userid
         const {userid, email,name,role}=req.body
-        console.log(userid)
-        console.log(email,name,role)
 
         const payload={
             ...(email && {email:email}),

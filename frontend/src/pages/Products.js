@@ -23,7 +23,6 @@ const Products = () => {
     })
 
     const dataresponse=await response.json()
-    console.log(dataresponse)
 
     if(dataresponse.error){
       toast.error(dataresponse.message)

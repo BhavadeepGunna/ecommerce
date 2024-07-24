@@ -4,8 +4,6 @@ const filterProductController = async(req,res)=>{
  try{
         const categoryList = req?.body?.category || []
 
-        console.log(categoryList)
-
         const products = await product.find({
             category :  {
                 "$in" : categoryList

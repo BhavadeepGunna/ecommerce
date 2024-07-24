@@ -52,7 +52,6 @@ const Login = () => {
           toast.error(dataApi.message)
         }
   }
-  console.log('data login',data)
   
 
 

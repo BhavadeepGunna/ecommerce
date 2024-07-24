@@ -31,10 +31,8 @@ const Signup = () => {
   }
 
   const handleuploadpic=async(e)=>{
-    console.log('started')
     const file=e.target.files[0];
     let imagepic=""
-    console.log(file.size)
     if (file.size > 2 * 1024 * 1024) { // 2MB limit
 
       toast.error('file size should be below 2MB')
@@ -42,17 +40,12 @@ const Signup = () => {
       imagepic= await imagetobase64(file)
     }
 
-
-    
-    console.log('imagePic',imagepic)
-
     setdata((prev)=>{
       return{
         ...prev,
         profilepic: imagepic
       }
     })
-    console.log("last",data.profilepic)
   
         
     }
@@ -60,7 +53,6 @@ const Signup = () => {
 
   const handlesubmit=async(e)=>{
         e.preventDefault()
-        console.log(data)
 
         if(data.password==data.confirmpassword){
         const dataresponse=await fetch(summaryApi.signup.url,{
